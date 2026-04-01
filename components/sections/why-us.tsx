@@ -9,27 +9,27 @@ import { Boxes, Shield, Scale, Target, CheckCircle2 } from "lucide-react"
 const reasons = [
   {
     icon: <Boxes className="w-8 h-8" />,
-    title: "We think in systems, not pages",
-    description: "Every element is part of a larger ecosystem designed to work together seamlessly.",
-    points: ["Modular architecture", "Scalable infrastructure", "Future-proof design"],
+    title: "Kami berpikir dalam sistem, bukan halaman",
+    description: "Setiap elemen adalah bagian dari ekosistem yang lebih besar yang dirancang untuk bekerja bersama secara mulus.",
+    points: ["Arsitektur modular", "Infrastruktur skalabel", "Desain tahan masa depan"],
   },
   {
     icon: <Shield className="w-8 h-8" />,
-    title: "We design for trust",
-    description: "Premium visual language that establishes credibility and strengthens brand perception.",
-    points: ["Professional aesthetics", "Consistent branding", "Quality assurance"],
+    title: "Kami mendesain untuk kepercayaan",
+    description: "Bahasa visual premium yang membangun kredibilitas dan memperkuat persepsi merek.",
+    points: ["Estetika profesional", "Branding konsisten", "Jaminan kualitas"],
   },
   {
     icon: <Scale className="w-8 h-8" />,
-    title: "We build for scale",
-    description: "Architecture that grows with your business without compromising performance.",
-    points: ["Cloud-ready solutions", "Performance optimized", "Enterprise security"],
+    title: "Kami membangun untuk skala",
+    description: "Arsitektur yang tumbuh bersama bisnis Anda tanpa mengorbankan performa.",
+    points: ["Solusi cloud-ready", "Optimalisasi performa", "Keamanan enterprise"],
   },
   {
     icon: <Target className="w-8 h-8" />,
-    title: "We focus on outcomes",
-    description: "Every decision is driven by measurable business results and real-world impact.",
-    points: ["Data-driven approach", "ROI focused", "Continuous improvement"],
+    title: "Kami fokus pada hasil",
+    description: "Setiap keputusan didorong oleh hasil bisnis terukur dan dampak dunia nyata.",
+    points: ["Pendekatan data-driven", "Fokus ROI", "Peningkatan berkelanjutan"],
   },
 ]
 
@@ -40,9 +40,9 @@ export function WhyUsSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          eyebrow="Why Choose Us"
-          title="What makes CNZ Tech Nusantara different"
-          description="We combine strategic thinking with technical excellence to deliver solutions that truly matter."
+          eyebrow="Mengapa Memilih Kami"
+          title="Apa yang membuat CNZ Tech Nusantara berbeda"
+          description="Kami menggabungkan pemikiran strategis dengan keunggulan teknis untuk memberikan solusi yang benar-benar penting."
         />
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">

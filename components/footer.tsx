@@ -6,21 +6,21 @@ import { Mail, MapPin, Phone, Linkedin, Twitter, Instagram, Github } from "lucid
 
 const footerLinks = {
   company: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "Testimonials", href: "#testimonials" },
+    { label: "Tentang", href: "#about" },
+    { label: "Layanan", href: "#services" },
+    { label: "Proyek", href: "#projects" },
+    { label: "Testimoni", href: "#testimonials" },
   ],
   services: [
-    { label: "Web Development", href: "#services" },
-    { label: "UI/UX Design", href: "#services" },
-    { label: "Mobile Apps", href: "#services" },
-    { label: "SaaS Development", href: "#services" },
+    { label: "Pengembangan Web", href: "#services" },
+    { label: "Desain UI/UX", href: "#services" },
+    { label: "Aplikasi Mobile", href: "#services" },
+    { label: "Pengembangan SaaS", href: "#services" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
+    { label: "Kebijakan Privasi", href: "#" },
+    { label: "Syarat Layanan", href: "#" },
+    { label: "Kebijakan Cookie", href: "#" },
   ],
 }
 
@@ -54,7 +54,7 @@ export function Footer() {
                 </div>
               </a>
               <p className="text-muted-foreground leading-relaxed mb-6 max-w-sm">
-                Building premium digital systems for modern businesses. We transform ideas into scalable products that drive real growth.
+                Membangun sistem digital premium untuk bisnis modern. Kami mengubah ide menjadi produk skalabel yang mendorong pertumbuhan nyata.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-muted-foreground">
@@ -80,7 +80,7 @@ export function Footer() {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-foreground mb-4">Company</h3>
+            <h3 className="font-semibold text-foreground mb-4">Perusahaan</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -102,7 +102,7 @@ export function Footer() {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-foreground mb-4">Services</h3>
+            <h3 className="font-semibold text-foreground mb-4">Layanan</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
@@ -149,7 +149,7 @@ export function Footer() {
           className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6"
         >
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} CNZ Tech Nusantara. All rights reserved.
+            &copy; {new Date().getFullYear()} CNZ Tech Nusantara. Hak cipta dilindungi.
           </p>
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (

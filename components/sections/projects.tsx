@@ -8,20 +8,20 @@ import { GlowOrb } from "@/components/ui/glow-orb"
 const projects = [
   {
     title: "FinanceFlow",
-    category: "SaaS Platform",
-    description: "A comprehensive financial management platform with real-time analytics, automated reporting, and seamless integrations for modern businesses.",
+    category: "Platform SaaS",
+    description: "Platform manajemen keuangan komprehensif dengan analitik real-time, pelaporan otomatis, dan integrasi mulus untuk bisnis modern.",
     techStack: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
   },
   {
     title: "MedConnect",
-    category: "Healthcare App",
-    description: "Patient-doctor communication platform with secure video consultations, appointment scheduling, and medical record management.",
+    category: "Aplikasi Kesehatan",
+    description: "Platform komunikasi pasien-dokter dengan konsultasi video aman, penjadwalan janji temu, dan manajemen rekam medis.",
     techStack: ["React Native", "Node.js", "MongoDB", "WebRTC"],
   },
   {
     title: "EcoTrack",
-    category: "Enterprise Solution",
-    description: "Sustainability tracking and reporting system for corporations to monitor their environmental impact and compliance.",
+    category: "Solusi Enterprise",
+    description: "Sistem pelacakan dan pelaporan keberlanjutan untuk perusahaan guna memantau dampak lingkungan dan kepatuhan mereka.",
     techStack: ["Vue.js", "Python", "AWS", "GraphQL"],
   },
 ]
@@ -33,9 +33,9 @@ export function ProjectsSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          eyebrow="Our Work"
-          title="Selected work that delivers real impact"
-          description="Explore some of our recent projects that showcase our expertise in building premium digital products."
+          eyebrow="Karya Kami"
+          title="Proyek terpilih yang memberikan dampak nyata"
+          description="Jelajahi beberapa proyek terbaru kami yang menunjukkan keahlian kami dalam membangun produk digital premium."
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

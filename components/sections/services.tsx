@@ -9,33 +9,33 @@ import { Globe, Paintbrush, Smartphone, Sparkles, Server, Rocket } from "lucide-
 const services = [
   {
     icon: <Globe className="w-6 h-6" />,
-    title: "Web Development",
-    description: "Custom web applications built with modern technologies for optimal performance, security, and scalability.",
+    title: "Pengembangan Web",
+    description: "Aplikasi web kustom dibangun dengan teknologi modern untuk performa optimal, keamanan, dan skalabilitas.",
   },
   {
     icon: <Paintbrush className="w-6 h-6" />,
-    title: "UI/UX Design",
-    description: "User-centered design that balances aesthetics with functionality to create memorable digital experiences.",
+    title: "Desain UI/UX",
+    description: "Desain berpusat pada pengguna yang menyeimbangkan estetika dengan fungsionalitas untuk pengalaman digital yang berkesan.",
   },
   {
     icon: <Smartphone className="w-6 h-6" />,
-    title: "Mobile App Development",
-    description: "Native and cross-platform mobile applications that deliver seamless experiences across all devices.",
+    title: "Pengembangan Aplikasi Mobile",
+    description: "Aplikasi mobile native dan cross-platform yang memberikan pengalaman mulus di semua perangkat.",
   },
   {
     icon: <Sparkles className="w-6 h-6" />,
-    title: "Product Branding",
-    description: "Strategic brand identity systems that communicate your values and differentiate you from competitors.",
+    title: "Branding Produk",
+    description: "Sistem identitas merek strategis yang mengkomunikasikan nilai Anda dan membedakan Anda dari kompetitor.",
   },
   {
     icon: <Server className="w-6 h-6" />,
-    title: "SaaS Platform Development",
-    description: "End-to-end SaaS solutions with robust architecture, subscription management, and analytics.",
+    title: "Pengembangan Platform SaaS",
+    description: "Solusi SaaS end-to-end dengan arsitektur robust, manajemen langganan, dan analitik.",
   },
   {
     icon: <Rocket className="w-6 h-6" />,
-    title: "Digital Transformation",
-    description: "Comprehensive digital strategy and implementation to modernize your business operations.",
+    title: "Transformasi Digital",
+    description: "Strategi dan implementasi digital komprehensif untuk memodernisasi operasi bisnis Anda.",
   },
 ]
 
@@ -46,9 +46,9 @@ export function ServicesSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          eyebrow="Our Services"
-          title="Solutions designed for modern businesses"
-          description="We offer a comprehensive suite of digital services to help you build, grow, and scale your business."
+          eyebrow="Layanan Kami"
+          title="Solusi yang dirancang untuk bisnis modern"
+          description="Kami menawarkan rangkaian layanan digital komprehensif untuk membantu Anda membangun, berkembang, dan memperbesar skala bisnis Anda."
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

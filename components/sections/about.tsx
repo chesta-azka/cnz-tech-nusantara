@@ -9,23 +9,23 @@ import { Target, Layers, Palette, LineChart } from "lucide-react"
 const features = [
   {
     icon: <Target className="w-6 h-6" />,
-    title: "Strategic Digital Partner",
-    description: "We align technology with your business goals to create meaningful impact.",
+    title: "Partner Digital Strategis",
+    description: "Kami menyelaraskan teknologi dengan tujuan bisnis Anda untuk menciptakan dampak nyata.",
   },
   {
     icon: <Layers className="w-6 h-6" />,
-    title: "Scalable Systems Thinking",
-    description: "Architecture designed to grow with your business, not against it.",
+    title: "Pemikiran Sistem Skalabel",
+    description: "Arsitektur yang dirancang untuk tumbuh bersama bisnis Anda, bukan menghalanginya.",
   },
   {
     icon: <Palette className="w-6 h-6" />,
-    title: "Premium Experience Design",
-    description: "Interfaces that communicate trust and elevate brand perception.",
+    title: "Desain Pengalaman Premium",
+    description: "Antarmuka yang mengkomunikasikan kepercayaan dan meningkatkan persepsi merek.",
   },
   {
     icon: <LineChart className="w-6 h-6" />,
-    title: "Business-Focused Execution",
-    description: "Every decision driven by measurable outcomes and real-world results.",
+    title: "Eksekusi Fokus Bisnis",
+    description: "Setiap keputusan didorong oleh hasil terukur dan dampak dunia nyata.",
   },
 ]
 
@@ -36,9 +36,9 @@ export function AboutSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          eyebrow="About Us"
-          title="We build systems, not just websites."
-          description="CNZ Tech Nusantara transforms ideas into scalable digital products. We combine design, engineering, and strategy to build solutions that perform in real business environments."
+          eyebrow="Tentang Kami"
+          title="Kami membangun sistem, bukan sekadar website."
+          description="CNZ Tech Nusantara mengubah ide menjadi produk digital yang skalabel. Kami menggabungkan desain, engineering, dan strategi untuk membangun solusi yang bekerja di lingkungan bisnis nyata."
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

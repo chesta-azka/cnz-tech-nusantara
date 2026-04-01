@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button"
 import { Moon, Sun, Menu, X } from "lucide-react"
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#projects", label: "Projects" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#contact", label: "Contact" },
+  { href: "#home", label: "Beranda" },
+  { href: "#about", label: "Tentang" },
+  { href: "#services", label: "Layanan" },
+  { href: "#projects", label: "Proyek" },
+  { href: "#testimonials", label: "Testimoni" },
+  { href: "#contact", label: "Kontak" },
 ]
 
 export function Navbar() {
@@ -88,7 +88,7 @@ export function Navbar() {
                 ) : (
                   <Moon className="h-5 w-5" />
                 )}
-                <span className="sr-only">Toggle theme</span>
+                <span className="sr-only">Ganti tema</span>
               </Button>
             )}
 
@@ -96,7 +96,7 @@ export function Navbar() {
             <Button
               className="hidden sm:flex rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 shadow-lg hover:shadow-xl transition-all"
             >
-              Start Project
+              Mulai Proyek
             </Button>
 
             {/* Mobile menu button */}
@@ -134,7 +134,7 @@ export function Navbar() {
                   </a>
                 ))}
                 <Button className="w-full mt-4 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground">
-                  Start Project
+                  Mulai Proyek
                 </Button>
               </div>
             </motion.div>

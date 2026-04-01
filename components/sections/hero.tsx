@@ -5,7 +5,18 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { GlowOrb } from "@/components/ui/glow-orb"
 import { FloatingBadge } from "@/components/ui/floating-badge"
+import { useCountUp } from "@/hooks/use-count-up"
 import { ArrowRight, Sparkles, TrendingUp, Zap, Users, CheckCircle2 } from "lucide-react"
+
+function CountUpStat({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) {
+  const { count, ref } = useCountUp({ end: value, duration: 2500, delay: delay * 1000 })
+  return (
+    <div ref={ref} className="text-center sm:text-left">
+      <div className="text-2xl sm:text-3xl font-bold gradient-text">{count}{suffix}</div>
+      <div className="text-xs sm:text-sm text-muted-foreground">{label}</div>
+    </div>
+  )
+}
 
 export function HeroSection() {
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
@@ -50,7 +61,7 @@ export function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-primary"
             >
               <Sparkles className="w-4 h-4" />
-              Premium Digital Solutions for Modern Companies
+              Solusi Digital Premium untuk Perusahaan Modern
             </motion.div>
 
             <motion.h1
@@ -59,8 +70,8 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-balance"
             >
-              <span className="text-foreground">CNZ Tech Nusantara builds digital products that </span>
-              <span className="gradient-text">elevate how modern companies grow.</span>
+              <span className="text-foreground">CNZ Tech Nusantara membangun produk digital yang </span>
+              <span className="gradient-text">mendorong pertumbuhan perusahaan modern.</span>
             </motion.h1>
 
             <motion.p
@@ -69,7 +80,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-muted-foreground leading-relaxed max-w-xl text-pretty"
             >
-              We partner with ambitious businesses to design and build scalable digital experiences that improve performance, strengthen brand perception, and drive real growth.
+              Kami bermitra dengan bisnis ambisius untuk merancang dan membangun pengalaman digital yang meningkatkan performa, memperkuat citra merek, dan mendorong pertumbuhan nyata.
             </motion.p>
 
             <motion.div
@@ -82,7 +93,7 @@ export function HeroSection() {
                 size="lg"
                 className="rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 shadow-lg hover:shadow-xl transition-all text-base px-8"
               >
-                Start Project
+                Mulai Proyek
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button
@@ -90,7 +101,7 @@ export function HeroSection() {
                 variant="outline"
                 className="rounded-xl glass border-border hover:bg-secondary/50 text-base px-8"
               >
-                Explore Services
+                Jelajahi Layanan
               </Button>
             </motion.div>
 
@@ -101,7 +112,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="pt-6"
             >
-              <p className="text-sm text-muted-foreground mb-4">Trusted by startups, agencies, and modern business teams</p>
+              <p className="text-sm text-muted-foreground mb-4">Dipercaya oleh startup, agensi, dan tim bisnis modern</p>
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -115,28 +126,21 @@ export function HeroSection() {
                 </div>
                 <div className="text-sm">
                   <span className="font-semibold text-foreground">80+</span>
-                  <span className="text-muted-foreground ml-1">Happy Clients</span>
+                  <span className="text-muted-foreground ml-1">Klien Puas</span>
                 </div>
               </div>
             </motion.div>
 
-            {/* Stats */}
+            {/* Stats with count animation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               className="grid grid-cols-3 gap-4 pt-4"
             >
-              {[
-                { value: "150+", label: "Projects Delivered" },
-                { value: "80+", label: "Happy Clients" },
-                { value: "99%", label: "Client Satisfaction" },
-              ].map((stat, i) => (
-                <div key={i} className="text-center sm:text-left">
-                  <div className="text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
+              <CountUpStat value={150} suffix="+" label="Proyek Selesai" delay={0.6} />
+              <CountUpStat value={80} suffix="+" label="Klien Puas" delay={0.8} />
+              <CountUpStat value={99} suffix="%" label="Kepuasan Klien" delay={1.0} />
             </motion.div>
           </div>
 
@@ -155,8 +159,8 @@ export function HeroSection() {
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent" />
                     <div>
-                      <div className="font-semibold text-foreground">Analytics Dashboard</div>
-                      <div className="text-sm text-muted-foreground">Real-time metrics</div>
+                      <div className="font-semibold text-foreground">Dashboard Analitik</div>
+                      <div className="text-sm text-muted-foreground">Metrik real-time</div>
                     </div>
                   </div>
                   <div className="flex gap-2">
@@ -195,9 +199,9 @@ export function HeroSection() {
                 {/* Metric cards */}
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { icon: Zap, label: "AI Automation", value: "93%", color: "text-chart-1" },
-                    { icon: TrendingUp, label: "Cloud Performance", value: "99.9%", color: "text-chart-2" },
-                    { icon: Sparkles, label: "Launch Speed", value: "2.4x", color: "text-chart-4" },
+                    { icon: Zap, label: "Otomatisasi AI", value: "93%", color: "text-chart-1" },
+                    { icon: TrendingUp, label: "Performa Cloud", value: "99.9%", color: "text-chart-2" },
+                    { icon: Sparkles, label: "Kecepatan Rilis", value: "2.4x", color: "text-chart-4" },
                     { icon: Users, label: "Engagement", value: "+38%", color: "text-chart-3" },
                   ].map((metric, i) => (
                     <div key={i} className="glass rounded-xl p-4">
@@ -213,17 +217,17 @@ export function HeroSection() {
             {/* Floating badges */}
             <FloatingBadge className="absolute -top-4 -right-4 flex items-center gap-2" delay={0}>
               <CheckCircle2 className="w-4 h-4 text-chart-2" />
-              <span>Enterprise Ready</span>
+              <span>Siap Enterprise</span>
             </FloatingBadge>
             
             <FloatingBadge className="absolute bottom-20 -left-8 flex items-center gap-2" delay={1}>
               <Zap className="w-4 h-4 text-chart-4" />
-              <span>Fast Deployment</span>
+              <span>Deploy Cepat</span>
             </FloatingBadge>
 
             <FloatingBadge className="absolute -bottom-4 right-10 flex items-center gap-2" delay={2}>
               <Sparkles className="w-4 h-4 text-primary" />
-              <span>AI Powered</span>
+              <span>Bertenaga AI</span>
             </FloatingBadge>
           </motion.div>
         </div>

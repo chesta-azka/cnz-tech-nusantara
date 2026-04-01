@@ -3,16 +3,24 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
+import { useCountUp } from "@/hooks/use-count-up"
 
 interface StatsCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  value: string
+  value: number
+  suffix?: string
   label: string
   icon?: React.ReactNode
   delay?: number
 }
 
 const StatsCard = React.forwardRef<HTMLDivElement, StatsCardProps>(
-  ({ className, value, label, icon, delay = 0, ...props }, ref) => {
+  ({ className, value, suffix = "", label, icon, delay = 0, ...props }, ref) => {
+    const { count, ref: countRef } = useCountUp({ 
+      end: value, 
+      duration: 2500, 
+      delay: delay * 1000 
+    })
+
     return (
       <motion.div
         ref={ref}
@@ -26,11 +34,15 @@ const StatsCard = React.forwardRef<HTMLDivElement, StatsCardProps>(
         )}
         {...props}
       >
-        {icon && (
-          <div className="mb-3 flex justify-center text-primary">{icon}</div>
-        )}
-        <div className="text-3xl font-bold gradient-text mb-1">{value}</div>
-        <div className="text-sm text-muted-foreground">{label}</div>
+        <div ref={countRef}>
+          {icon && (
+            <div className="mb-3 flex justify-center text-primary">{icon}</div>
+          )}
+          <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">
+            {count}{suffix}
+          </div>
+          <div className="text-sm text-muted-foreground">{label}</div>
+        </div>
       </motion.div>
     )
   }

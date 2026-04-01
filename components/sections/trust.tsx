@@ -6,10 +6,10 @@ import { StatsCard } from "@/components/ui/stats-card"
 import { Briefcase, Users, ThumbsUp, Clock } from "lucide-react"
 
 const stats = [
-  { icon: <Briefcase className="w-6 h-6" />, value: "150+", label: "Projects Delivered" },
-  { icon: <Users className="w-6 h-6" />, value: "80+", label: "Clients Served" },
-  { icon: <ThumbsUp className="w-6 h-6" />, value: "99%", label: "Satisfaction Rate" },
-  { icon: <Clock className="w-6 h-6" />, value: "5+", label: "Years Experience" },
+  { icon: <Briefcase className="w-6 h-6" />, value: 150, suffix: "+", label: "Proyek Selesai" },
+  { icon: <Users className="w-6 h-6" />, value: 80, suffix: "+", label: "Klien Dilayani" },
+  { icon: <ThumbsUp className="w-6 h-6" />, value: 99, suffix: "%", label: "Tingkat Kepuasan" },
+  { icon: <Clock className="w-6 h-6" />, value: 5, suffix: "+", label: "Tahun Pengalaman" },
 ]
 
 export function TrustSection() {
@@ -23,7 +23,7 @@ export function TrustSection() {
           viewport={{ once: true }}
           className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"
         >
-          Built to help companies move faster, look stronger, and scale with confidence.
+          Dibangun untuk membantu perusahaan bergerak lebih cepat, tampil lebih kuat, dan berkembang dengan percaya diri.
         </motion.p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -32,6 +32,7 @@ export function TrustSection() {
               key={index}
               icon={stat.icon}
               value={stat.value}
+              suffix={stat.suffix}
               label={stat.label}
               delay={index * 0.1}
             />

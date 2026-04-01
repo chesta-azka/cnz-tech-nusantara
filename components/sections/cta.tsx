@@ -27,7 +27,7 @@ export function CTASection() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
           >
-            Ready to Start?
+            Siap Memulai?
           </motion.div>
 
           <motion.h2
@@ -37,7 +37,7 @@ export function CTASection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance"
           >
-            Let&apos;s build something that actually matters.
+            Mari bangun sesuatu yang benar-benar berarti.
           </motion.h2>
 
           <motion.p
@@ -47,7 +47,7 @@ export function CTASection() {
             viewport={{ once: true }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 text-pretty"
           >
-            If you&apos;re serious about building a premium digital product, we should talk. Let&apos;s discuss how we can help transform your vision into reality.
+            Jika Anda serius ingin membangun produk digital premium, kita harus berbicara. Mari diskusikan bagaimana kami dapat membantu mewujudkan visi Anda.
           </motion.p>
 
           <motion.div
@@ -61,7 +61,7 @@ export function CTASection() {
               size="lg"
               className="rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 shadow-lg hover:shadow-xl transition-all text-base px-8"
             >
-              Start Project
+              Mulai Proyek
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button
@@ -70,7 +70,7 @@ export function CTASection() {
               className="rounded-xl glass border-border hover:bg-secondary/50 text-base px-8"
             >
               <Calendar className="mr-2 w-5 h-5" />
-              Book Consultation
+              Jadwalkan Konsultasi
             </Button>
           </motion.div>
         </motion.div>
