@@ -497,11 +497,15 @@ export default function LandingPage() {
                     <MessageCircle className="w-4 h-4 mr-2" />
                     Chat WhatsApp
                   </Button>
+                    </a>
+
+                  <a href="https://wa.me/6282125447232?text=Halo%20CNZ,%20saya%20mau%20pesan%20website" target="_blank" rel="noopener noreferrer">
                   <Button size="lg" variant="outline" className="rounded-xl text-base h-12 px-8">
                     Pesan Sekarang
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                     </a>
+                  
                 </div>
               </div>
             </div>
