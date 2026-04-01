@@ -1,121 +1,143 @@
 "use client"
 
-import { useRef } from 'react'
+import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, MeshDistortMaterial, Sphere, RoundedBox, Environment } from '@react-three/drei'
+import { Float, Sphere, Environment, MeshTransmissionMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 
-function RobotHead() {
+function CuteRobot() {
   const groupRef = useRef<THREE.Group>(null)
+  const leftEyeRef = useRef<THREE.Mesh>(null)
+  const rightEyeRef = useRef<THREE.Mesh>(null)
   
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.2
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
+      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.4) * 0.15
+      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.6) * 0.08
     }
+    // Blinking eyes
+    const blink = Math.sin(state.clock.elapsedTime * 3) > 0.98 ? 0.1 : 1
+    if (leftEyeRef.current) leftEyeRef.current.scale.y = blink
+    if (rightEyeRef.current) rightEyeRef.current.scale.y = blink
   })
 
   return (
-    <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-      <group ref={groupRef} position={[0, 0, 0]}>
-        {/* Main Head */}
-        <RoundedBox args={[2, 2.2, 1.8]} radius={0.35} smoothness={4} position={[0, 0, 0]}>
+    <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.3}>
+      <group ref={groupRef} position={[0, -0.3, 0]} scale={1.2}>
+        {/* Main Head - Rounded Sphere */}
+        <Sphere args={[1.3, 64, 64]} position={[0, 0, 0]}>
+          <MeshTransmissionMaterial
+            color="#8b5cf6"
+            thickness={0.5}
+            roughness={0.1}
+            transmission={0.3}
+            ior={1.5}
+            chromaticAberration={0.02}
+            backside={false}
+          />
+        </Sphere>
+        
+        {/* Inner glow sphere */}
+        <Sphere args={[1.15, 32, 32]} position={[0, 0, 0]}>
           <meshStandardMaterial 
             color="#7c3aed" 
-            metalness={0.8} 
-            roughness={0.2}
-            envMapIntensity={1}
-          />
-        </RoundedBox>
-        
-        {/* Face Plate */}
-        <RoundedBox args={[1.6, 1.4, 0.15]} radius={0.15} smoothness={4} position={[0, 0.1, 0.9]}>
-          <meshStandardMaterial 
-            color="#1e1b4b" 
             metalness={0.9} 
             roughness={0.1}
-            envMapIntensity={0.5}
+            envMapIntensity={2}
           />
-        </RoundedBox>
+        </Sphere>
+        
+        {/* Face Visor */}
+        <mesh position={[0, 0.1, 1]}>
+          <capsuleGeometry args={[0.5, 0.4, 16, 32]} />
+          <meshStandardMaterial 
+            color="#1e1b4b" 
+            metalness={0.95} 
+            roughness={0.05}
+            envMapIntensity={1}
+          />
+        </mesh>
         
         {/* Left Eye */}
-        <Sphere args={[0.25, 32, 32]} position={[-0.45, 0.2, 1]}>
+        <Sphere ref={leftEyeRef} args={[0.18, 32, 32]} position={[-0.28, 0.15, 1.15]}>
           <meshStandardMaterial 
-            color="#06b6d4" 
-            emissive="#06b6d4"
-            emissiveIntensity={2}
-            metalness={0.5}
-            roughness={0.1}
+            color="#22d3ee" 
+            emissive="#22d3ee"
+            emissiveIntensity={3}
+            toneMapped={false}
           />
         </Sphere>
         
         {/* Right Eye */}
-        <Sphere args={[0.25, 32, 32]} position={[0.45, 0.2, 1]}>
+        <Sphere ref={rightEyeRef} args={[0.18, 32, 32]} position={[0.28, 0.15, 1.15]}>
           <meshStandardMaterial 
-            color="#06b6d4" 
-            emissive="#06b6d4"
-            emissiveIntensity={2}
-            metalness={0.5}
-            roughness={0.1}
+            color="#22d3ee" 
+            emissive="#22d3ee"
+            emissiveIntensity={3}
+            toneMapped={false}
           />
         </Sphere>
         
-        {/* Mouth/Speaker Grill */}
-        <RoundedBox args={[0.8, 0.15, 0.1]} radius={0.05} smoothness={4} position={[0, -0.35, 1]}>
+        {/* Cute Smile */}
+        <mesh position={[0, -0.15, 1.18]} rotation={[0, 0, 0]}>
+          <torusGeometry args={[0.15, 0.03, 16, 32, Math.PI]} />
           <meshStandardMaterial 
             color="#a855f7" 
             emissive="#a855f7"
-            emissiveIntensity={0.5}
-            metalness={0.7}
-            roughness={0.3}
+            emissiveIntensity={1}
           />
-        </RoundedBox>
+        </mesh>
         
         {/* Left Antenna */}
-        <group position={[-0.6, 1.3, 0]}>
-          <RoundedBox args={[0.1, 0.5, 0.1]} radius={0.03} smoothness={4}>
+        <group position={[-0.5, 1.1, 0]}>
+          <mesh>
+            <cylinderGeometry args={[0.04, 0.04, 0.4, 16]} />
             <meshStandardMaterial color="#7c3aed" metalness={0.8} roughness={0.2} />
-          </RoundedBox>
-          <Sphere args={[0.12, 16, 16]} position={[0, 0.35, 0]}>
+          </mesh>
+          <Sphere args={[0.12, 16, 16]} position={[0, 0.3, 0]}>
             <meshStandardMaterial 
-              color="#06b6d4" 
-              emissive="#06b6d4"
-              emissiveIntensity={1.5}
+              color="#f472b6" 
+              emissive="#f472b6"
+              emissiveIntensity={2}
+              toneMapped={false}
             />
           </Sphere>
         </group>
         
         {/* Right Antenna */}
-        <group position={[0.6, 1.3, 0]}>
-          <RoundedBox args={[0.1, 0.5, 0.1]} radius={0.03} smoothness={4}>
+        <group position={[0.5, 1.1, 0]}>
+          <mesh>
+            <cylinderGeometry args={[0.04, 0.04, 0.4, 16]} />
             <meshStandardMaterial color="#7c3aed" metalness={0.8} roughness={0.2} />
-          </RoundedBox>
-          <Sphere args={[0.12, 16, 16]} position={[0, 0.35, 0]}>
+          </mesh>
+          <Sphere args={[0.12, 16, 16]} position={[0, 0.3, 0]}>
             <meshStandardMaterial 
-              color="#a855f7" 
-              emissive="#a855f7"
-              emissiveIntensity={1.5}
+              color="#22d3ee" 
+              emissive="#22d3ee"
+              emissiveIntensity={2}
+              toneMapped={false}
             />
           </Sphere>
         </group>
         
-        {/* Ear Pieces */}
-        <RoundedBox args={[0.2, 0.6, 0.4]} radius={0.08} smoothness={4} position={[-1.1, 0, 0]}>
-          <meshStandardMaterial color="#5b21b6" metalness={0.8} roughness={0.2} />
-        </RoundedBox>
-        <RoundedBox args={[0.2, 0.6, 0.4]} radius={0.08} smoothness={4} position={[1.1, 0, 0]}>
-          <meshStandardMaterial color="#5b21b6" metalness={0.8} roughness={0.2} />
-        </RoundedBox>
+        {/* Ear Bumps */}
+        <Sphere args={[0.25, 32, 32]} position={[-1.15, 0, 0]}>
+          <meshStandardMaterial color="#6d28d9" metalness={0.8} roughness={0.2} />
+        </Sphere>
+        <Sphere args={[0.25, 32, 32]} position={[1.15, 0, 0]}>
+          <meshStandardMaterial color="#6d28d9" metalness={0.8} roughness={0.2} />
+        </Sphere>
         
-        {/* Glow Ring around head */}
-        <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[1.5, 0.03, 16, 100]} />
+        {/* Glow Ring */}
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[1.6, 0.02, 16, 100]} />
           <meshStandardMaterial 
             color="#a855f7" 
             emissive="#a855f7"
-            emissiveIntensity={1}
+            emissiveIntensity={1.5}
             transparent
-            opacity={0.6}
+            opacity={0.5}
+            toneMapped={false}
           />
         </mesh>
       </group>
@@ -123,59 +145,81 @@ function RobotHead() {
   )
 }
 
-function FloatingParticles() {
-  const particles = useRef<THREE.Points>(null)
+function OrbitingElements() {
+  const groupRef = useRef<THREE.Group>(null)
   
   useFrame((state) => {
-    if (particles.current) {
-      particles.current.rotation.y = state.clock.elapsedTime * 0.05
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.2
+      groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1
     }
   })
   
-  const particleCount = 50
-  const positions = new Float32Array(particleCount * 3)
-  
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 8
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 8
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 8
-  }
-  
   return (
-    <points ref={particles}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={particleCount}
-          array={positions}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial 
-        size={0.05} 
-        color="#a855f7" 
-        transparent 
-        opacity={0.6}
-        sizeAttenuation
-      />
-    </points>
+    <group ref={groupRef}>
+      {/* Orbiting spheres */}
+      {[0, 1, 2, 3, 4].map((i) => {
+        const angle = (i / 5) * Math.PI * 2
+        const radius = 2.8
+        return (
+          <Sphere 
+            key={i} 
+            args={[0.08, 16, 16]} 
+            position={[Math.cos(angle) * radius, Math.sin(angle * 2) * 0.3, Math.sin(angle) * radius]}
+          >
+            <meshStandardMaterial 
+              color={i % 2 === 0 ? "#a855f7" : "#22d3ee"} 
+              emissive={i % 2 === 0 ? "#a855f7" : "#22d3ee"}
+              emissiveIntensity={2}
+              toneMapped={false}
+            />
+          </Sphere>
+        )
+      })}
+    </group>
   )
 }
 
-function GlowingSphere() {
+function FloatingParticles() {
+  const pointsRef = useRef<THREE.Points>(null)
+  
+  const [positions, colors] = useMemo(() => {
+    const count = 80
+    const pos = new Float32Array(count * 3)
+    const col = new Float32Array(count * 3)
+    
+    for (let i = 0; i < count; i++) {
+      const theta = Math.random() * Math.PI * 2
+      const phi = Math.acos(Math.random() * 2 - 1)
+      const r = 3 + Math.random() * 2
+      
+      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta)
+      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
+      pos[i * 3 + 2] = r * Math.cos(phi)
+      
+      const c = new THREE.Color(Math.random() > 0.5 ? "#a855f7" : "#22d3ee")
+      col[i * 3] = c.r
+      col[i * 3 + 1] = c.g
+      col[i * 3 + 2] = c.b
+    }
+    return [pos, col]
+  }, [])
+  
+  useFrame((state) => {
+    if (pointsRef.current) {
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.03
+      pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.1) * 0.1
+    }
+  })
+  
   return (
-    <Sphere args={[3, 64, 64]} position={[0, 0, -3]}>
-      <MeshDistortMaterial
-        color="#4c1d95"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0.4}
-        metalness={0.8}
-        transparent
-        opacity={0.15}
-      />
-    </Sphere>
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" count={80} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-color" count={80} array={colors} itemSize={3} />
+      </bufferGeometry>
+      <pointsMaterial size={0.06} vertexColors transparent opacity={0.8} sizeAttenuation />
+    </points>
   )
 }
 
@@ -183,25 +227,19 @@ export default function Robot3D() {
   return (
     <div className="w-full h-full min-h-[400px]">
       <Canvas
-        camera={{ position: [0, 0, 6], fov: 45 }}
+        camera={{ position: [0, 0, 6], fov: 40 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
         <Environment preset="city" />
-        <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#a855f7" />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#06b6d4" />
-        <spotLight
-          position={[0, 10, 5]}
-          angle={0.3}
-          penumbra={1}
-          intensity={1}
-          color="#ffffff"
-        />
+        <ambientLight intensity={0.4} />
+        <pointLight position={[10, 10, 10]} intensity={1.5} color="#a855f7" />
+        <pointLight position={[-10, -5, -10]} intensity={0.8} color="#22d3ee" />
+        <spotLight position={[0, 15, 5]} angle={0.3} penumbra={1} intensity={1.5} color="#ffffff" />
         
-        <RobotHead />
+        <CuteRobot />
+        <OrbitingElements />
         <FloatingParticles />
-        <GlowingSphere />
       </Canvas>
     </div>
   )
