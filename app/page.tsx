@@ -492,6 +492,7 @@ export default function LandingPage() {
                   Konsultasi gratis! Ceritakan kebutuhan Anda dan dapatkan website impian dengan harga terjangkau.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <a href = "https://wa.me/6282125447232">
                   <Button size="lg" className="rounded-xl text-base h-12 px-8">
                     <MessageCircle className="w-4 h-4 mr-2" />
                     Chat WhatsApp
@@ -500,6 +501,7 @@ export default function LandingPage() {
                     Pesan Sekarang
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
+                    </a>
                 </div>
               </div>
             </div>
