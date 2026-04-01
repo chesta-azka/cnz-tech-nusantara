@@ -17,13 +17,13 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'CNZ Tech Nusantara | Premium Digital Solutions',
-  description: 'CNZ Tech Nusantara builds digital products that elevate how modern companies grow. We partner with ambitious businesses to design and build scalable digital experiences.',
-  keywords: ['digital agency', 'web development', 'UI/UX design', 'mobile app development', 'SaaS', 'digital transformation'],
+  title: 'CNZ Tech Nusantara | Jasa Pembuatan Website Profesional Murah',
+  description: 'Jasa pembuatan website profesional hanya Rp 400.000. Desain modern, responsif, SEO friendly. Cocok untuk bisnis, portfolio, dan toko online. Gratis hosting & domain!',
+  keywords: ['jasa pembuatan website', 'jasa website murah', 'website profesional', 'landing page', 'toko online', 'web developer indonesia'],
   authors: [{ name: 'CNZ Tech Nusantara' }],
   openGraph: {
-    title: 'CNZ Tech Nusantara | Premium Digital Solutions',
-    description: 'Building premium digital systems for modern businesses.',
+    title: 'CNZ Tech Nusantara | Website Premium Hanya Rp 400K',
+    description: 'Dapatkan website profesional dengan harga terjangkau. Desain modern, responsif, dan SEO friendly.',
     type: 'website',
   },
 }
@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
