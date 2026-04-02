@@ -195,10 +195,12 @@ export default function LandingPage() {
                 transition={{ delay: 0.4 }}
                 className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               >
+                 <a href="https://wa.me/6282125447232?text=Halo%20CNZ,%20saya%20mau%20pesan%20website" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="rounded-xl text-base h-12 px-8 group glow">
                   Pesan Sekarang
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
+                 </a>
                 <Link href="/demo">
                   <Button size="lg" variant="outline" className="rounded-xl text-base h-12 px-8 w-full sm:w-auto group">
                     <Play className="w-4 h-4 mr-2" />
@@ -333,12 +335,13 @@ export default function LandingPage() {
                     </li>
                   ))}
                 </ul>
-                
+
+                 <a href="https://wa.me/6282125447232?text=Halo%20CNZ,%20saya%20mau%20pesan%20website" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="w-full rounded-xl text-base h-12">
                   Pesan Sekarang
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-                
+                 </a>
                 <p className="text-center text-xs text-muted-foreground mt-4">
                   Garansi uang kembali 100% jika tidak puas
                 </p>
